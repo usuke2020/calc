@@ -13,12 +13,13 @@ def make_click(ch):
     def click(e):
         print(ch)
         if ch == '=': calc(0); return
-        else: disp.insert(tk.END, ch)
+        elif ch == 'AC': disp.strip(); return
+        else: disp.insert(tk.END, ch)               #文末に文字を代入する
     return click
 
 #計算式の計算
 def calc(e):
-    label["text"] = '= ' + str(eval(disp.get()))
+    label["text"] = '= ' + str(eval(disp.get()))    #dispに入っている値を数字にする
 
 
 #ウィンドウの作成
@@ -28,10 +29,10 @@ win.geometry("400x350")     #サイズ
 
 
 #ディスプレイ部分
-disp = tk.Entry(win, font=('', 20), justify="center")
-disp.pack(fill='x')
+disp = tk.Entry(win, font=('', 20), justify="center")     #数字のサイズ設定
+disp.pack(fill='x')                                       #横拡大
 disp.bind('<Return>', calc)
-label = tk.Label(win, font=('', 20), anchor="center")
+label = tk.Label(win, font=('', 20), anchor="center")     #余白のサイズ設定
 label.pack(fill='x')
 
 
